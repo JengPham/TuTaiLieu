@@ -76,3 +76,12 @@ uint8_t take_slave_address(UART_HandleTypeDef *huart) {
 	}
 	return add;
 }
+
+/*
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
+	if (huart->Instance == huart1.Instance) {
+		Data[0] = RxData[3] << 8 | RxData[4];
+		HAL_UARTEx_ReceiveToIdle_IT(&huart1, RxData, 16);
+	}
+}
+*/
