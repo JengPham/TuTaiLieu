@@ -2,7 +2,7 @@
  * modbus_crc.c
  *
  *  Created on: Dec 11, 2023
- *      Author: jengp
+ *      Author: KarimPham
  */
 #include "modbus_crc.h"
 

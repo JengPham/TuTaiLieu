@@ -2,7 +2,7 @@
  * modbus_crc.h
  *
  *  Created on: Dec 11, 2023
- *      Author: jengp
+ *      Author: KarimPham
  */
 
 #ifndef INC_MODBUS_CRC_H_
