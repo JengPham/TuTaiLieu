@@ -1,9 +1,15 @@
 /*
- * modbus_crc.c
+ *  MODBUS_CRC.c
  *
- *  Created on: Dec 11, 2023
- *      Author: KarimPham
+ *  Created on: Dec 12, 2023
+ *  Author    : Phong Thanh-Pham
+ *  Email     : Phong.PT.HUST@gmail.com
+ *
  */
+
+/*******************************************************************************
+ * Include
+ ******************************************************************************/
 #include "modbus_crc.h"
 
 /* Table of CRC values for high-order byte */
@@ -66,6 +72,12 @@ static const uint8_t table_crc_lo[] = {
     0x43, 0x83, 0x41, 0x81, 0x80, 0x40
 };
 
+/**
+  * @brief
+  * @param  [in]
+  * @param  [in]
+  * @return
+  */
 uint16_t crc16(uint8_t *buffer, uint16_t buffer_length)
 {
     uint8_t crc_hi = 0xFF; /* high CRC byte initialized */
