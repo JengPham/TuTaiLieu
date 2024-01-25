@@ -1,8 +1,10 @@
 /*
- * TOF.c
+ * XY-MD02.c
  *
- *  Created on: Nov 8, 2023
- *      Author: KarimPham
+ *  Created on: Dec 12, 2023
+ *  Author    : Phong Thanh-Pham
+ *  Email     : Phong.PT.HUST@gmail.com
+ *
  */
 
 /*******************************************************************************
