@@ -72,13 +72,10 @@ static const uint8_t table_crc_lo[] = {
     0x43, 0x83, 0x41, 0x81, 0x80, 0x40
 };
 
-/**
-  * @brief
-  * @param  [in]
-  * @param  [in]
-  * @return
-  */
-uint16_t crc16(uint8_t *buffer, uint16_t buffer_length)
+/******************************************************************************
+ * Function Prototypes
+ *****************************************************************************/
+uint16_t crc16(const uint8_t *buffer, uint16_t buffer_length)
 {
     uint8_t crc_hi = 0xFF; /* high CRC byte initialized */
     uint8_t crc_lo = 0xFF; /* low CRC byte initialized */
@@ -93,3 +90,7 @@ uint16_t crc16(uint8_t *buffer, uint16_t buffer_length)
 
     return (crc_hi << 8 | crc_lo);
 }
+
+/*******************************************************************************
+ * EOF
+ ******************************************************************************/

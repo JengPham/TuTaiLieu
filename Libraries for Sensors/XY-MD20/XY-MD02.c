@@ -31,25 +31,17 @@ static uint8_t TxData_Modify_Add[8] = { 0x01, 0x06, 0x01, 0x01, 0x00, 0x08,
  * Function Prototypes
  *****************************************************************************/
 
-/**
-  * @brief
-  * @param  [in]
-  * @param  [in]
-  * @return
-  */
-void send_data(UART_HandleTypeDef *huart, uint8_t *data) {
-	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_SET); /*Pull the TX_EN pin (RE and DE Pins) High. This will put the module in the transmitter mode.*/
+void send_data(UART_HandleTypeDef *huart, const uint8_t *data)
+{
+	/*Pull the TX_EN pin (RE and DE Pins) High. This will put the module in the transmitter mode.*/
+	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_SET);
 	HAL_UART_Transmit(huart, data, 8, 1000);
-	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_RESET);/*Pull the TX_EN pin LOW, so to put the module in the receive mode*/
+	/*Pull the TX_EN pin LOW, so to put the module in the receive mode*/
+	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_RESET);
 }
 
-/**
-  * @brief
-  * @param  [in]
-  * @param  [in]
-  * @return
-  */
-void get_temp_humi(UART_HandleTypeDef *huart, Data_XY_MD20 *DATA) {
+void get_temp_humi(UART_HandleTypeDef *huart, Data_XY_MD20 *DATA)
+{
 	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_SET);
 	HAL_UART_Transmit(huart, TxData_Temp_Humi, 8, 1000);
 	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_RESET);
@@ -63,13 +55,8 @@ void get_temp_humi(UART_HandleTypeDef *huart, Data_XY_MD20 *DATA) {
 	}
 }
 
-/**
-  * @brief
-  * @param  [in]
-  * @param  [in]
-  * @return
-  */
-void get_temp(UART_HandleTypeDef *huart, Data_XY_MD20 *DATA) {
+void get_temp(UART_HandleTypeDef *huart, Data_XY_MD20 *DATA)
+{
 	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_SET);
 	HAL_UART_Transmit(huart, TxData_Temp, 8, 1000);
 	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_RESET);
@@ -81,13 +68,8 @@ void get_temp(UART_HandleTypeDef *huart, Data_XY_MD20 *DATA) {
 	}
 }
 
-/**
-  * @brief
-  * @param  [in]
-  * @param  [in]
-  * @return
-  */
-void get_humi(UART_HandleTypeDef *huart, Data_XY_MD20 *DATA) {
+void get_humi(UART_HandleTypeDef *huart, Data_XY_MD20 *DATA)
+{
 	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_SET);
 	HAL_UART_Transmit(huart, TxData_Humi, 8, 1000);
 	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_RESET);
@@ -99,14 +81,9 @@ void get_humi(UART_HandleTypeDef *huart, Data_XY_MD20 *DATA) {
 	}
 }
 
-/**
-  * @brief
-  * @param  [in]
-  * @param  [in]
-  * @return
-  */
-uint8_t take_slave_address(UART_HandleTypeDef *huart) {
-	uint8_t add;
+uint8_t take_slave_address(UART_HandleTypeDef *huart)
+{
+	uint8_t add = 0;
 	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_SET);
 	HAL_UART_Transmit(huart, TxData_Div_Add, 8, 1000);
 	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_RESET);
@@ -118,12 +95,3 @@ uint8_t take_slave_address(UART_HandleTypeDef *huart) {
 	}
 	return add;
 }
-
-/*
-void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
-	if (huart->Instance == huart1.Instance) {
-		Data[0] = RxData[3] << 8 | RxData[4];
-		HAL_UARTEx_ReceiveToIdle_IT(&huart1, RxData, 16);
-	}
-}
-*/
