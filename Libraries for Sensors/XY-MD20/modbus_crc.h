@@ -30,7 +30,7 @@
   * @param[in] buffer_length: Length of the data buffer.
   * @reVal: The calculated CRC value.
   */
-uint16_t crc16(uint8_t *buffer, uint16_t buffer_length);
+uint16_t crc16(const uint8_t *buffer, uint16_t buffer_length);
 
 #endif /* INC_MODBUS_CRC_H_ */
 
